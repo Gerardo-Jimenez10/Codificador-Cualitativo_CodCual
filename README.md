@@ -1,0 +1,1 @@
+# Codificador_Cualitativo_CodCual
