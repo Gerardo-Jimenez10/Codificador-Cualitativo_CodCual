@@ -1,6 +1,6 @@
 # 🔍 Codificador Cualitativo 💻
 
-Aplicación que optimiza el proceso de codificación cualitativa, permitiendo identificar palabras, oraciones y fragmentos de texto en documentos de opinión (como entrevistas). El propósito fundamental es reducir significativamente el tiempo necesario para realizar búsquedas relevantes en grandes volúmenes de texto.
+Aplicación diseñada para optimizar el proceso de codificación cualitativa, facilitando la identificación de palabras clave, oraciones y fragmentos dentro de documentos de opinión (como entrevistas). Su objetivo principal es reducir significativamente el tiempo invertido en localizar información relevante en grandes volúmenes de texto.
 
 ---
 
@@ -8,6 +8,11 @@ Aplicación que optimiza el proceso de codificación cualitativa, permitiendo id
 
 **Hernández Jiménez Gerardo**  
 *Python Developer* 🧑‍💻🐍
+
+---
+
+## 📬 Contacto
+*jgerardo.jmz@gmail.com*
 
 ---
 
