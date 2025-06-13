@@ -4,7 +4,8 @@ Aplicación que optimiza el proceso de codificación cualitativa, permitiendo id
 # Autor
 ## Python Dev
 
-- Hernández Jiménez Gerardo 🧑‍💻🐍
+### Hernández Jiménez Gerardo 🧑‍💻🐍
+
 
 # 💻 Tecnologías:
 
