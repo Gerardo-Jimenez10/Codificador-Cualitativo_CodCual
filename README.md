@@ -6,7 +6,7 @@ Aplicación que optimiza el proceso de codificación cualitativa, permitiendo id
 
 # 💻 Tech Stack:
 
-[![My Skills](https://skillicons.dev/icons?i=py)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=py,vscode)](https://skillicons.dev)
 
 <div align="center">
   <p>Visitor count</p>
