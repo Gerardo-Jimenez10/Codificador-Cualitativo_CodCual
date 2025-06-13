@@ -6,7 +6,7 @@ Aplicación diseñada para optimizar el proceso de codificación cualitativa, fa
 
 ## 👨‍💻 Autor
 
-**Hernández Jiménez Gerardo**  
+**Gerardo Hernández Jiménez**  
 *Python Developer* 🧑‍💻🐍
 
 ---
