@@ -11,13 +11,11 @@ Aplicación diseñada para optimizar el proceso de codificación cualitativa, fa
 
 ---
 
-## 📬 Contacto
-*jgerardo.jmz@gmail.com*
-
----
-
 ## 🖥️ Tecnologías
 
 [![](https://skillicons.dev/icons?i=py,vscode,git,github)](https://skillicons.dev)
 
 ---
+
+## 📬 Contacto
+jgerardo.jmz@gmail.com
