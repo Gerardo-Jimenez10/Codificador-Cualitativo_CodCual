@@ -8,7 +8,7 @@ Aplicación que optimiza el proceso de codificación cualitativa, permitiendo id
 
 # 💻 Tecnologías:
 
-[![My Skills](https://skillicons.dev/icons?i=py,vscode,git,github)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=py,vscode,git,github)]
 
 <div align="center">
   <br>
