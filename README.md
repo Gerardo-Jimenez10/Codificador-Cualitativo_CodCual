@@ -18,4 +18,4 @@ Aplicación diseñada para optimizar el proceso de codificación cualitativa, fa
 ---
 
 ## 📬 Contacto
-jgerardo.jmz@gmail.com
+**jgerardo.jmz@gmail.com**
