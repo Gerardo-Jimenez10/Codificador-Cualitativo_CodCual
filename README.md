@@ -3,15 +3,13 @@ Aplicación que optimiza el proceso de codificación cualitativa, permitiendo id
 
 # Autor
 ## Python Dev
-
-### Hernández Jiménez Gerardo 🧑‍💻🐍
+### * Hernández Jiménez Gerardo 🧑‍💻🐍
 
 
 # 💻 Tecnologías:
-
 [![](https://skillicons.dev/icons?i=py,vscode,git,github)](https://skillicons.dev)
 
-<div align="center">
+<div align="left">
   <br>
   <p>Views</p>
   <img src="https://profile-counter.glitch.me/Gerardo-Jimenez10/count.svg"/>
