@@ -1,10 +1,10 @@
 # Codificador Cualitativo
 Aplicación que optimiza el proceso de codificación cualitativa, permitiendo identificar palabras, oraciones y fragmentos de texto en documentos de opinión (como entrevistas). Esto tiene como propósito fundamental reducir significativamente el tiempo necesario para realizar búsquedas relevantes en grandes volúmenes de texto.
 
-## 🌐 Socials:
+## 🌐 Redes Sociales:
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/www.linkedin.com/in/gerardojiménez) [![email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:jgerardo.jmz@gmail.com) 
 
-# 💻 Tech Stack:
+# 💻 Tecnologías:
 
 [![My Skills](https://skillicons.dev/icons?i=py,vscode,git,github)](https://skillicons.dev)
 
