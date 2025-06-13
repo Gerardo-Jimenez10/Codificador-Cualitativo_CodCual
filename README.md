@@ -11,7 +11,7 @@ Aplicación que optimiza el proceso de codificación cualitativa, permitiendo id
 
 ---
 
-## 💻 Tecnologías
+## 🖥️ Tecnologías
 
 [![](https://skillicons.dev/icons?i=py,vscode,git,github)](https://skillicons.dev)
 
