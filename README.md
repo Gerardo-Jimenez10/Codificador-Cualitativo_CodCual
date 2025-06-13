@@ -6,7 +6,7 @@ Aplicación que optimiza el proceso de codificación cualitativa, permitiendo id
 ### * Hernández Jiménez Gerardo 🧑‍💻🐍
 
 # 🌐 Contacto:
-[![email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:jgerardo.jmz@gmail.com) 
+[![](https://img.shields.io/badge/Email-D14836?logo=linkedin&logoColor=white)](www.linkedin.com/in/gerardojiménez) 
 
 # 💻 Tecnologías:
 [![](https://skillicons.dev/icons?i=py,vscode,git,github)](https://skillicons.dev)
