@@ -16,6 +16,6 @@ Aplicación que optimiza el proceso de codificación cualitativa, permitiendo id
 </div>
 
 ---
-[![](https://visitcount.itsvg.in/api?id=Gerardo-Jimenez10&icon=0&color=0)](https://Views.itsvg.in)
+[![](https://Views.itsvg.in/api?id=Gerardo-Jimenez10&icon=0&color=0)](https://Views.itsvg.in)
 
 <!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
