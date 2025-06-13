@@ -10,7 +10,7 @@ Aplicación que optimiza el proceso de codificación cualitativa, permitiendo id
 
 <div align="center">
   <br>
-  <p>Visitor count</p>
+  <p>Views</p>
   <img src="https://profile-counter.glitch.me/Gerardo-Jimenez10/count.svg"/>
   <br/>
 </div>
