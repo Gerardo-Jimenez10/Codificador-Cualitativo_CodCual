@@ -9,6 +9,7 @@ Aplicación que optimiza el proceso de codificación cualitativa, permitiendo id
 [![My Skills](https://skillicons.dev/icons?i=py,vscode,git,github)](https://skillicons.dev)
 
 <div align="center">
+  <br>
   <p>Visitor count</p>
   <img src="https://profile-counter.glitch.me/Gerardo-Jimenez10/count.svg"/>
   <br/>
