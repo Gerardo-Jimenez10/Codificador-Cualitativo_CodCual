@@ -16,9 +16,3 @@ Aplicación que optimiza el proceso de codificación cualitativa, permitiendo id
 [![](https://skillicons.dev/icons?i=py,vscode,git,github)](https://skillicons.dev)
 
 ---
-
-## 👁️ Views
-
-<div align="left">
-  <img src="https://profile-counter.glitch.me/Gerardo-Jimenez10/count.svg" alt="contador de visitas"/>
-</div>
