@@ -2,7 +2,7 @@
                    Version 3, 29 June 2007
 Derechos de autor (C) 2007 Free Software Foundation, Inc. https://fsf.org/ A todos se les permite copiar y distribuir copias textuales de este documento de licencia, pero no se permite cambiarlo.
 
-                        Preamble
+                        Preámbulo
 La Licencia Pública General GNU es una licencia copyleft gratuita para software y otros tipos de trabajos.
 
 Las licencias para la mayoría del software y otros trabajos prácticos están diseñadas para quitarle la libertad de compartir y cambiar los trabajos. Por el contrario, la Licencia Pública General GNU tiene como objetivo garantizar su libertad para compartir y cambiar todas las versiones de un programa, para asegurarse de que siga siendo software libre para todos sus usuarios. Nosotros, la Free Software Foundation, utilizamos la Licencia Pública General GNU para la mayor parte de nuestro software; se aplica también a cualquier otro trabajo publicado de esta manera por sus autores. También puedes aplicarlo a tus programas.
@@ -23,7 +23,7 @@ Finalmente, cada programa se ve amenazado constantemente por patentes de softwar
 
 A continuación se detallan los términos y condiciones precisos para la copia, distribución y modificación.
 
-                   TERMS AND CONDITIONS
+                   TÉRMINOS Y CONDICIONES
 Definiciones.
 "Esta Licencia" se refiere a la versión 3 de la Licencia Pública General GNU.
 
@@ -74,71 +74,60 @@ Puede cobrar cualquier precio o ningún precio por cada copia que transmita, y p
 Transmisión de versiones fuente modificadas.
 Podrás transmitir una obra basada en el Programa, o las modificaciones para producirla a partir del Programa, en forma de código fuente bajo los términos de la sección 4, siempre que también cumplas todas estas condiciones:
 
-a) The work must carry prominent notices stating that you modified
-it, and giving a relevant date.
+a) La obra debe llevar avisos destacados que indiquen que usted modificó y dando una fecha relevante.
 
-b) The work must carry prominent notices stating that it is
-released under this License and any conditions added under section
-7.  This requirement modifies the requirement in section 4 to
-"keep intact all notices".
+b) La obra deberá llevar avisos destacados que indiquen que lo es publicado bajo esta Licencia y cualquier condición agregada en la sección 7. Este requisito modifica el requisito de la sección 4 a "mantener intactos todos los avisos".
 
-c) You must license the entire work, as a whole, under this
-License to anyone who comes into possession of a copy.  This
-License will therefore apply, along with any applicable section 7
-additional terms, to the whole of the work, and all its parts,
-regardless of how they are packaged.  This License gives no
-permission to license the work in any other way, but it does not
-invalidate such permission if you have separately received it.
+c) Debes licenciar toda la obra, en su conjunto, bajo este Licencia para cualquier persona que entre en posesión de una copia. Esto Por lo tanto, se aplicará la licencia, junto con cualquier sección 7 aplicable términos adicionales, a toda la obra, y a todas sus partes, independientemente de cómo estén empaquetados. Esta Licencia no da permiso para licenciar la obra de cualquier otra forma, pero no lo hace invalide dicho permiso si lo ha recibido por separado.
 
-d) If the work has interactive user interfaces, each must display
-Appropriate Legal Notices; however, if the Program has interactive
-interfaces that do not display Appropriate Legal Notices, your
-work need not make them do so.
+d) Si la obra tiene interfaces de usuario interactivas, cada una debe mostrarse Avisos legales apropiados; sin embargo, si el Programa tiene actividades interactivas interfaces que no muestran Avisos legales apropiados, su El trabajo no tiene por qué obligarlos a hacerlo.
+
 Una compilación de una obra cubierta con otras obras separadas e independientes, que por su naturaleza no son extensiones de la obra cubierta y que no se combinan con ella de manera que formen un programa más grande, en o sobre un volumen de un medio de almacenamiento o distribución, se denomina "agregado" si la compilación y sus derechos de autor resultantes no se utilizan para limitar el acceso o los derechos legales de los usuarios de la compilación más allá de lo que permiten las obras individuales. La inclusión de una obra cubierta en un agregado no hace que esta Licencia se aplique a las otras partes del agregado.
 
 Transmisión de formularios que no son de origen.
 Puede transmitir un trabajo cubierto en forma de código objeto según los términos de las secciones 4 y 5, siempre que también transmita la Fuente Correspondiente legible por máquina según los términos de esta Licencia, de una de estas maneras:
 
-a) Convey the object code in, or embodied in, a physical product
-(including a physical distribution medium), accompanied by the
-Corresponding Source fixed on a durable physical medium
-customarily used for software interchange.
+a) Transmitir el código objeto en un producto físico o incorporado en él
+(incluido un medio de distribución físico), acompañado por el
+Fuente correspondiente fijada en un medio físico duradero
+Se utiliza habitualmente para el intercambio de software.
 
-b) Convey the object code in, or embodied in, a physical product
-(including a physical distribution medium), accompanied by a
-written offer, valid for at least three years and valid for as
-long as you offer spare parts or customer support for that product
-model, to give anyone who possesses the object code either (1) a
-copy of the Corresponding Source for all the software in the
-product that is covered by this License, on a durable physical
-medium customarily used for software interchange, for a price no
-more than your reasonable cost of physically performing this
-conveying of source, or (2) access to copy the
-Corresponding Source from a network server at no charge.
+b) Transmitir el código objeto en un producto físico o incorporado en él
+(incluido un medio de distribución físico), acompañado de un
+oferta escrita, válida por al menos tres años y válida por as
+siempre y cuando ofrezca repuestos o atención al cliente para ese producto
+modelo, para darle a cualquiera que posea el código objeto (1) un
+copia de la Fuente Correspondiente para todo el software del
+producto que está cubierto por esta Licencia, en un físico duradero
+medio utilizado habitualmente para el intercambio de software, por un precio no
+más que su costo razonable de realizar esto físicamente
+transmisión de la fuente, o (2) acceso para copiar la
+Fuente correspondiente desde un servidor de red sin coste alguno.
 
-c) Convey individual copies of the object code with a copy of the
-written offer to provide the Corresponding Source.  This
-alternative is allowed only occasionally and noncommercially, and
-only if you received the object code with such an offer, in accord
-with subsection 6b.
+c) Transmitir copias individuales del código objeto con una copia del
+oferta escrita para proporcionar la Fuente Correspondiente.  Esto
+La alternativa sólo se permite ocasionalmente y de forma no comercial, y
+sólo si recibió el código objeto con dicha oferta, de acuerdo
+con el inciso 6b.
 
-d) Convey the object code by offering access from a designated
-place (gratis or for a charge), and offer equivalent access to the
-Corresponding Source in the same way through the same place at no
-further charge.  You need not require recipients to copy the
-Corresponding Source along with the object code.  If the place to
-copy the object code is a network server, the Corresponding Source
-may be on a different server (operated by you or a third party)
-that supports equivalent copying facilities, provided you maintain
-clear directions next to the object code saying where to find the
-Corresponding Source.  Regardless of what server hosts the
-Corresponding Source, you remain obligated to ensure that it is
-available for as long as needed to satisfy these requirements.
+d) Transmitir el código objeto ofreciendo acceso desde un lugar designado
+lugar (gratis o de pago), y ofrecer acceso equivalente al
+Fuente correspondiente de la misma manera a través del mismo lugar en no
+cargo adicional.  No es necesario exigir a los destinatarios que copien el
+Fuente correspondiente junto con el código objeto.  Si el lugar para
+copiar el código objeto es un servidor de red, la fuente correspondiente
+Puede estar en un servidor diferente (operado por usted o un tercero)
+que admita funciones de copia equivalentes, siempre que las mantenga
+direcciones claras junto al código objeto que indican dónde encontrar el
+Fuente correspondiente.  Independientemente del servidor que aloje el
+Fuente correspondiente, usted sigue obligado a asegurarse de que así sea
+disponible durante el tiempo que sea necesario para satisfacer estos requisitos.
 
-e) Convey the object code using peer-to-peer transmission, provided
-you inform other peers where the object code and Corresponding
-Source of the work are being offered to the general public at no
-charge under subsection 6d.
+e) Transmitir el código objeto mediante transmisión peer to peer, siempre que
+informa a otros pares dónde está el código objeto y Correspondiente
+La fuente de la obra se ofrece al público en general en no
+cargo en virtud del inciso 6d.
+
 No es necesario incluir una parte separable del código objeto, cuyo código fuente está excluido de la Fuente correspondiente como Biblioteca del sistema, al transmitir el trabajo del código objeto.
 
 Un "Producto de Usuario" es (1) un "producto de consumo", que significa cualquier propiedad personal tangible que normalmente se utiliza para fines personales, familiares o domésticos, o (2) cualquier cosa diseñada o vendida para su incorporación a una vivienda. Para determinar si un producto es un producto de consumo, los casos dudosos se resolverán a favor de la cobertura. Para un producto particular recibido por un usuario particular, "normalmente utilizado" se refiere a un uso típico o común de esa clase de producto, independientemente del estado del usuario particular o de la forma en que el usuario particular realmente usa, o espera o se espera que use, el producto. Un producto es un producto de consumo independientemente de si tiene usos comerciales, industriales o no de consumo sustanciales,a menos que dichos usos representen el único modo significativo de uso del producto.
@@ -158,28 +147,29 @@ Cuando transmite una copia de una obra cubierta, puede, a su elección, eliminar
 
 Sin perjuicio de cualquier otra disposición de esta Licencia, para el material que agregue a una obra cubierta, puede (si lo autorizan los titulares de los derechos de autor de ese material) complementar los términos de esta Licencia con los términos:
 
-a) Disclaiming warranty or limiting liability differently from the
-terms of sections 15 and 16 of this License; or
+a) Renunciar a la garantía o limitar la responsabilidad de manera diferente a la
+términos de las secciones 15 y 16 de esta Licencia; o
 
-b) Requiring preservation of specified reasonable legal notices or
-author attributions in that material or in the Appropriate Legal
-Notices displayed by works containing it; or
+b) Exigir la conservación de avisos legales razonables específicos o
+atribuciones del autor en ese material o en el Legal Apropiado
+Avisos mostrados por obras que lo contienen; o
 
-c) Prohibiting misrepresentation of the origin of that material, or
-requiring that modified versions of such material be marked in
-reasonable ways as different from the original version; or
+c) Prohibir la tergiversación del origen de ese material, o
+exigir que las versiones modificadas de dicho material estén marcadas en
+formas razonables que sean diferentes a la versión original; o
 
-d) Limiting the use for publicity purposes of names of licensors or
-authors of the material; or
+d) Limitar el uso con fines publicitarios de nombres de licenciantes o
+autores del material; o
 
-e) Declining to grant rights under trademark law for use of some
-trade names, trademarks, or service marks; or
+e) Negarse a conceder derechos en virtud de la legislación sobre marcas para el uso de algunos
+nombres comerciales, marcas comerciales o marcas de servicio; o
 
-f) Requiring indemnification of licensors and authors of that
-material by anyone who conveys the material (or modified versions of
-it) with contractual assumptions of liability to the recipient, for
-any liability that these contractual assumptions directly impose on
-those licensors and authors.
+f) Exigir indemnización a los licenciantes y autores de la misma
+material por cualquiera que transmita el material (o versiones modificadas de
+it) con supuestos contractuales de responsabilidad ante el destinatario, para
+cualquier responsabilidad que estos supuestos contractuales impongan directamente
+esos licenciantes y autores.
+
 Todos los demás términos adicionales no permisivos se consideran "restricciones adicionales" en el sentido del artículo 10. Si el Programa tal como lo recibió, o cualquier parte del mismo, contiene un aviso que indica que se rige por esta Licencia junto con un término que constituye una restricción adicional, puede eliminar ese término. Si un documento de licencia contiene una restricción adicional pero permite la renovación de la licencia o el transporte bajo esta Licencia, usted puede agregar a un material de trabajo cubierto regido por los términos de ese documento de licencia, siempre que la restricción adicional no sobreviva a dicha renovación de la licencia o el transporte.
 
 Si agrega términos a un trabajo cubierto de acuerdo con esta sección, debe colocar, en los archivos fuente relevantes, una declaración de los términos adicionales que se aplican a esos archivos o un aviso que indique dónde encontrar los términos aplicables.
@@ -203,14 +193,12 @@ Cada vez que usted transmite un trabajo cubierto, el destinatario recibe automá
 
 Una "transacción de entidad" es una transacción que transfiere el control de una organización, o sustancialmente todos los activos de una, o subdivide una organización, o fusiona organizaciones. Si la propagación de una obra cubierta resulta de una transacción de entidad, cada parte de esa transacción que recibe una copia de la obra también recibe las licencias que el predecesor de la parte en interés tenía o podía otorgar según el párrafo anterior, más un derecho a la posesión de la Fuente Correspondiente de la obra del predecesor en interés, si el predecesor lo tiene o puede conseguirlo con esfuerzos razonables.
 
-No podrá imponer más restricciones al ejercicio de los derechos otorgados o afirmados bajo esta Licencia. Por ejemplo, no puede imponer una tarifa de licencia, regalías u otro cargo por el ejercicio de los derechos otorgados bajo esta Licencia, y no puede iniciar un litigio (incluido un reclamo cruzado o contrademanda en una demanda) alegando que se infringe cualquier reclamo de patente al realizar, usar, vender, ofrecer para la venta o importar el Programa o cualquier parte del mismo.
+No podrá imponer más restricciones al ejercicio de los derechos otorgados o afirmados bajo esta Licencia. Por ejemplo, no puede imponer una tarifa de licencia, regalías u otro cargo por el ejercicio de los derechos otorgados bajo esta Licencia, y no puede iniciar un litigio (incluido un reclamo cruzado o contrademanda en una demanda) alegando que se infringe cualquier reclamo de patente al realizar, usar o importar el Programa o cualquier parte del mismo.
 
 Patentes.
 Un "colaborador" es un titular de derechos de autor que autoriza el uso bajo esta Licencia del Programa o de una obra en la que se basa el Programa. La obra así licenciada se denomina "versión del colaborador" del colaborador.
 
 Las "reclamaciones de patentes esenciales" de un colaborador son todas las reclamaciones de patentes propiedad o controladas por el colaborador, ya sean adquiridas o adquiridas en el futuro, que se infringirían de alguna manera, permitida por esta Licencia, al fabricar, usar o vender su versión del colaborador, pero no incluyen reclamaciones que se infringirían solo como consecuencia de una modificación adicional de la versión del colaborador. A los efectos de esta definición, "control" incluye el derecho a otorgar sublicencias de patentes de manera consistente con los requisitos de esta Licencia.
-
-Cada colaborador le otorga una licencia de patente no exclusiva, mundial y libre de regalías según las reivindicaciones de patente esenciales del colaborador, para fabricar, usar, vender, ofrecer para la venta, importar y, de otro modo, ejecutar, modificar y propagar el contenido de su versión colaboradora.
 
 En los tres párrafos siguientes, una "licencia de patente" es cualquier acuerdo o compromiso expreso, cualquiera sea su denominación, de no hacer cumplir una patente (como un permiso expreso para ejercer una patente o un pacto de no demandar por infracción de patente). "Otorgar" dicha licencia de patente a una parte significa llegar a dicho acuerdo o compromiso de no hacer cumplir una patente contra la parte.
 
@@ -253,29 +241,30 @@ Si desarrollas un nuevo programa y quieres que sea de la mayor utilidad posible 
 
 Para ello, adjunte al programa los siguientes avisos. Lo más seguro es adjuntarlos al inicio de cada archivo fuente para indicar de manera más efectiva la exclusión de la garantía; y cada archivo debe tener al menos la línea de "derechos de autor" y un puntero a dónde se encuentra el aviso completo.
 
-<one line to give the program's name and a brief idea of what it does.>
-Copyright (C) <year>  <name of author>
+<una línea para dar el nombre del programa y una breve idea de lo que hace.>
+Copyright (C) <año> <nombre del autor>
 
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+Este programa es software libre: puedes redistribuirlo y/o modificarlo
+está bajo los términos de la Licencia Pública General GNU publicada por
+la Free Software Foundation, ya sea la versión 3 de la Licencia, o
+(a tu elección) cualquier versión posterior.
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+Este programa se distribuye con la esperanza de que sea útil
+pero SIN NINGUNA GARANTÍA; sin siquiera la garantía implícita de
+COMERCIABILIDAD o IDONEIDAD PARA UN PROPÓSITO PARTICULAR.  Ver el
+Licencia Pública General GNU para más detalles.
 
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
+Deberías haber recibido una copia de la Licencia Pública General GNU
+junto con este programa.  Si no, ver <https://www.gnu.org/licenses/>.
 Agregue también información sobre cómo comunicarse con usted por correo electrónico y en papel.
 
 Si el programa interactúa con el terminal, haga que emita un breve aviso como este cuando se inicie en modo interactivo:
 
-<program>  Copyright (C) <year>  <name of author>
-This program comes with ABSOLUTELY NO WARRANTY; for details type `show w'.
-This is free software, and you are welcome to redistribute it
-under certain conditions; type `show c' for details.
+<programa> Copyright (C) <año> <nombre del autor>
+Este programa no viene con ABSOLUTAMENTE NINGUNA GARANTÍA; para obtener más detalles, escriba "mostrar w".
+Este es software gratuito y puedes redistribuirlo
+bajo ciertas condiciones; escriba `show c' para obtener más detalles.
+
 Los comandos hipotéticos show w' and show c' debe mostrar las partes apropiadas de la Licencia Pública General. Por supuesto, los comandos de su programa pueden ser diferentes; para una interfaz GUI, utilizaría un "cuadro Acerca de".
 
 También debe pedirle a su empleador (si trabaja como programador) o a la escuela, si la hay, que firme una "exención de derechos de autor" para el programa, si es necesario. Para obtener más información sobre esto y cómo aplicar y seguir la GNU GPL, consulte https://www.gnu.org/licenses/.
