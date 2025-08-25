@@ -19,6 +19,7 @@ Este proyecto está licenciado bajo la **GNU General Public License v3.0 (GPLv3)
 - Se conservan los avisos de copyright y la autoría original.
   
 Consulta el archivo `LICENSE` para el texto legal completo.
+
 ---
 
 ## 🖥️ Tecnologías
