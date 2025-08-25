@@ -25,13 +25,13 @@ Consulta el archivo [`LICENSE`](./LICENSE) o haz clic en el badge de arriba para
 2. **Clona** tu copia en tu equipo:
    ```bash
    git clone https://github.com/TU_USUARIO/TU_REPOSITORIO.git
-3. **Crea una rama** para tu apotación:
+3. **Crea una rama** para tu aportación:
    ```bash
    git checkout -b mi-nueva-funcionalidad
 4. **Realiza tus cambios** y haz commit:
    ```bash
    git commit -m "Descripción clara de mi cambio"
-5. **Sube tu rama** a tu repositorio en GitHub:
+5. **Sube tu rama** al repositorio en GitHub:
    ```bash
    git push origin mi-nueva-funcionalidad
 
