@@ -1,33 +1,38 @@
-﻿# Contar notebooks como Python
-*.ipynb linguist-language=Python
+﻿# ========================
+# Forcing GitHub Linguist
+# ========================
 
-# Documentación (excluida de estadísticas)
+# Todos los archivos Python como lenguaje principal
+*.py linguist-language=Python
+
+# Archivos de documentación, ignorarlos en el conteo de código
 *.md linguist-documentation
-docs/** linguist-documentation
-examples/** linguist-documentation
+*.txt linguist-documentation
+README linguist-documentation
+LICENSE linguist-documentation
 
-# Archivos front-end (excluidos)
-*.html linguist-vendored
-*.css  linguist-vendored
-*.js   linguist-vendored
+# Archivos de configuración o generados, ignorarlos en el conteo de código
+*.json linguist-vendored
+*.yml linguist-vendored
+*.yaml linguist-vendored
+*.log linguist-vendored
+*.csv linguist-vendored
+*.ico linguist-vendored
+*.png linguist-vendored
+*.jpg linguist-vendored
+*.jpeg linguist-vendored
+*.gif linguist-vendored
+*.exe linguist-vendored
+*.dll linguist-vendored
+*.so linguist-vendored
+*.zip linguist-vendored
+*.tar linguist-vendored
+*.gz linguist-vendored
+*.bat linguist-vendored
+*.ps1 linguist-vendored
 
-# Archivos generados/datos/recursos (excluidos)
-*.json linguist-generated
-*.yml  linguist-generated
-*.yaml linguist-generated
-*.toml linguist-generated
-*.cfg  linguist-generated
-*.ini  linguist-generated
-*.lock linguist-generated
-*.csv  linguist-generated
-*.tsv  linguist-generated
-*.xml  linguist-generated
-*.svg  linguist-generated
-*.png  linguist-generated
-*.jpg  linguist-generated
-*.jpeg linguist-generated
-*.gif  linguist-generated
-*.ico  linguist-generated
-
-# Si aún no marca 100% (casos raros), descomenta la línea siguiente para forzar:
-# * linguist-language=Python
+# Evita que VS Code o Python generen archivos de caché se cuenten
+__pycache__/ linguist-vendored
+*.pyc linguist-vendored
+*.pyo linguist-vendored
+*.pyd linguist-vendored
