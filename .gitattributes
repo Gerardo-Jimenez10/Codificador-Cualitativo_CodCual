@@ -1,0 +1,33 @@
+﻿# Contar notebooks como Python
+*.ipynb linguist-language=Python
+
+# Documentación (excluida de estadísticas)
+*.md linguist-documentation
+docs/** linguist-documentation
+examples/** linguist-documentation
+
+# Archivos front-end (excluidos)
+*.html linguist-vendored
+*.css  linguist-vendored
+*.js   linguist-vendored
+
+# Archivos generados/datos/recursos (excluidos)
+*.json linguist-generated
+*.yml  linguist-generated
+*.yaml linguist-generated
+*.toml linguist-generated
+*.cfg  linguist-generated
+*.ini  linguist-generated
+*.lock linguist-generated
+*.csv  linguist-generated
+*.tsv  linguist-generated
+*.xml  linguist-generated
+*.svg  linguist-generated
+*.png  linguist-generated
+*.jpg  linguist-generated
+*.jpeg linguist-generated
+*.gif  linguist-generated
+*.ico  linguist-generated
+
+# Si aún no marca 100% (casos raros), descomenta la línea siguiente para forzar:
+# * linguist-language=Python
