@@ -17,7 +17,7 @@ Este proyecto está licenciado bajo la **GNU General Public License v3.0 (GPLv3)
 - Si lo redistribuyes o publicas derivados, debes mantener la **GPLv3** y publicar el código fuente correspondiente, incluyendo modificaciones.
 - Se conservan los avisos de copyright y la autoría original.
   
-Consulta el archivo [![Licencia](https://img.shields.io/badge/Licencia-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html) para ver el texto legal completo.
+Consulta la [![Licencia](https://img.shields.io/badge/Licencia-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html) para ver el texto legal completo.
 
 ---
 
