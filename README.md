@@ -4,13 +4,6 @@ Aplicación diseñada para optimizar el proceso de codificación cualitativa, fa
 
 ---
 
-## 👨‍💻 Autor
-
-**Gerardo Hernández Jiménez**  
-*Python Developer* 🧑‍💻🐍
-
----
-
 ## 🖥️ Tecnologías
 
 [![](https://skillicons.dev/icons?i=py,vscode,git,github)](https://skillicons.dev)
@@ -25,6 +18,13 @@ Este proyecto está licenciado bajo la **GNU General Public License v3.0 (GPLv3)
 - Se conservan los avisos de copyright y la autoría original.
   
 Consulta el archivo `LICENSE` para el texto legal completo.
+
+---
+
+## 👨‍💻 Autor
+
+**Gerardo Hernández Jiménez**  
+*Python Developer* 🧑‍💻🐍
 
 ---
 
