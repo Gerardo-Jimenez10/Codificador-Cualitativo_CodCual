@@ -9,17 +9,6 @@ Aplicación diseñada para optimizar el proceso de codificación cualitativa, fa
 [![](https://skillicons.dev/icons?i=py,vscode,git,github)](https://skillicons.dev)
 
 ---
-
-## 📜 Licencia 
-
-Este proyecto está licenciado bajo la **GNU General Public License v3.0 (GPLv3)**.  
-- Puedes usarlo y ejecutarlo localmente sin restricciones.
-- Si lo redistribuyes o publicas derivados, debes mantener la **GPLv3** y publicar el código fuente correspondiente, incluyendo modificaciones.
-- Se conservan los avisos de copyright y la autoría original.
-
-Consulta el archivo [`LICENSE`](./LICENSE) o haz clic en el badge de arriba para ver el texto legal completo.
-
----
 ## 🤝 Cómo contribuir
 1. **Haz un fork** del repositorio.
 2. **Clona** tu copia en tu equipo:
@@ -34,6 +23,17 @@ Consulta el archivo [`LICENSE`](./LICENSE) o haz clic en el badge de arriba para
 5. **Sube tu rama** al repositorio en GitHub:
    ```bash
    git push origin mi-nueva-funcionalidad
+
+---
+
+## 📜 Licencia 
+
+Este proyecto está licenciado bajo la **GNU General Public License v3.0 (GPLv3)**.  
+- Puedes usarlo y ejecutarlo localmente sin restricciones.
+- Si lo redistribuyes o publicas derivados, debes mantener la **GPLv3** y publicar el código fuente correspondiente, incluyendo modificaciones.
+- Se conservan los avisos de copyright y la autoría original.
+
+Consulta el archivo [`LICENSE`](./LICENSE) o haz clic en el badge de arriba para ver el texto legal completo.
 
 ---
 
