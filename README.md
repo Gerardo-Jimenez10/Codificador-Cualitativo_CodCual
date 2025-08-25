@@ -12,7 +12,7 @@ Aplicación diseñada para optimizar el proceso de codificación cualitativa, fa
 
 ## 📜 Licencia
 
-Este proyecto está licenciado bajo la [![Licencia](https://img.shields.io/badge/Licencia-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
+Este proyecto está licenciado bajo la:  [![Licencia](https://img.shields.io/badge/Licencia-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
 - Puedes usarlo y ejecutarlo localmente sin restricciones.
 - Si lo redistribuyes o publicas derivados, debes mantener la **GPLv3** y publicar el código fuente correspondiente, incluyendo modificaciones.
 - Se conservan los avisos de copyright y la autoría original.
