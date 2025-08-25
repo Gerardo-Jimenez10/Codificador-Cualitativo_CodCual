@@ -20,6 +20,13 @@ Este proyecto está licenciado bajo la **GNU General Public License v3.0 (GPLv3)
 Consulta el archivo [`LICENSE`](./LICENSE) o haz clic en el badge de arriba para ver el texto legal completo.
 
 ---
+## 🤝 Cómo contribuir
+1. **Haz un fork** del repositorio.
+2. **Crea una rama** para tu cambio:
+   ```bash
+   git checkout -b mi-nueva-funcionalidad
+
+---
 
 ## 👨‍💻 Autor
 
