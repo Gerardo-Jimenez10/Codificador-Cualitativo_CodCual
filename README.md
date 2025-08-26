@@ -10,6 +10,8 @@ Aplicación diseñada para optimizar el proceso de codificación cualitativa, fa
 
 ---
 ## 🤝 Cómo contribuir
+
+Si estás interesado en colaborar:
 1. **Haz un fork** del repositorio.
 2. **Clona** tu copia en tu equipo:
    ```bash
