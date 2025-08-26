@@ -9,6 +9,14 @@ Aplicación diseñada para optimizar el proceso de codificación cualitativa, fa
 [![](https://skillicons.dev/icons?i=py,vscode,git,github)](https://skillicons.dev)
 
 ---
+
+## ▶️ Uso
+
+Para utilizar este proyecto:
+1. Clona este repositorio en tu máquina local.
+2. Sigue las instrucciones del archivo [`requirements.txt`](./requirements.txt)
+
+---
 ## 🤝 Cómo contribuir
 
 Si estás interesado en colaborar:
