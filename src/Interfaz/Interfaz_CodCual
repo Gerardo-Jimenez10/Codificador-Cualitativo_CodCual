@@ -8,7 +8,7 @@ import nltk
 try:
     nltk.download('punkt_tab')
 except Exception as e:
-    pass 
+    pass
 import docx
 import fitz
 import pickle
@@ -92,7 +92,8 @@ class EtiquetadoApp:
         self.raiz.configure(bg="green")
         self.raiz.state("zoomed")
         # Ruta base
-        ruta_base = Path(r"C:\Users\jgera\Documents\Codificador\Interfaz_Iconos")
+        ruta_base = Path(
+            r"C:\Users\jgera\Documents\Codificador\src\Interfaz")
 
         # Construye la ruta absoluta al archivo del icono
         icono_ruta = ruta_base / "Logo.png"
@@ -119,19 +120,19 @@ class EtiquetadoApp:
 
         # -----Iconos para el Menu Archivo---------------
         self.icono_importar = PhotoImage(
-            file=r'C:\Users\jgera\Documents\Codificador\Interfaz_Iconos\importar.png') 
+            file=r'C:\Users\jgera\Documents\Codificador\src\Interfaz\Iconos\importar.png')
         self.icono_guardado = PhotoImage(
-            file=r'C:\Users\jgera\Documents\Codificador\Interfaz_Iconos\guardar.png')
+            file=r'C:\Users\jgera\Documents\Codificador\src\Interfaz\Iconos\guardar.png')
         self.icono_salir = PhotoImage(
-            file=r'C:\Users\jgera\Documents\Codificador\Interfaz_Iconos\salir.png')
+            file=r'C:\Users\jgera\Documents\Codificador\src\Interfaz\Iconos\salir.png')
 
         # -----Iconos para el Menu Edición---------------
         self.icono_limpiar = PhotoImage(
-            file=r'C:\Users\jgera\Documents\Codificador\Interfaz_Iconos\limpiar.png')
+            file=r'C:\Users\jgera\Documents\Codificador\src\Interfaz\Iconos\limpiar.png')
 
         # -----Iconos para el Menu Información---------------
         self.icono_info = PhotoImage(
-            file=r'C:\Users\jgera\Documents\Codificador\Interfaz_Iconos\información.png')
+            file=r'C:\Users\jgera\Documents\Codificador\src\Interfaz\Iconos\información.png')
 
         # -------Opciones del menú desplegable: "Archivo"-------------------
         self.menu_desplegable = Menu(self.barraMenu, tearoff=0)
@@ -292,10 +293,10 @@ class EtiquetadoApp:
 
         # -----Icono para la opción Codificar----------------
         self.icono_codificar = PhotoImage(
-            file=r'C:\Users\jgera\Documents\Codificador\Interfaz_Iconos\codificar.png')
+            file=r'C:\Users\jgera\Documents\Codificador\src\Interfaz\Iconos\codificar.png')
         # -----Icono para la opción Remover----------------
         self.icono_remover = PhotoImage(
-            file=r'C:\Users\jgera\Documents\Codificador\Interfaz_Iconos\remover.png')
+            file=r'C:\Users\jgera\Documents\Codificador\src\Interfaz\Iconos\remover.png')
 
         # Opción "Etiquetar" en un clic
         self.menu_contextual_texto_original = Menu(
@@ -644,10 +645,10 @@ class EtiquetadoApp:
 
                 # -----Icono para la opción Eliminar----------------
                 self.icono_eliminar = PhotoImage(
-                    file=r'C:\Users\jgera\Documents\Codificador\Interfaz_Iconos\eliminar.png')
+                    file=r'C:\Users\jgera\Documents\Codificador\src\Interfaz\Iconos\eliminar.png')
                 # -----Icono para la opción Anexar----------------
                 self.icono_anexar = PhotoImage(
-                    file=r'C:\Users\jgera\Documents\Codificador\Interfaz_Iconos\anexar.png')
+                    file=r'C:\Users\jgera\Documents\Codificador\src\Interfaz\Iconos\anexar.png')
 
                 # Menú contextual para el botón
                 menu_contextual = tk.Menu(btn_resaltar, tearoff=0)
