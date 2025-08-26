@@ -12,7 +12,7 @@ Aplicación diseñada para optimizar el proceso de codificación cualitativa, fa
 
 ## ▶️ Uso
 
-Para utilizar este proyecto:
+Para instalar y ejecutar este proyecto:
 1. Clona este repositorio en tu máquina local.
 2. Sigue las instrucciones del archivo [`requirements.txt`](./requirements.txt)
 
