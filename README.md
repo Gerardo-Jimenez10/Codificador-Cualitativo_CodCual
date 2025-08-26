@@ -15,7 +15,7 @@ Aplicación diseñada para optimizar el proceso de codificación cualitativa, fa
 Para instalar y ejecutar este proyecto:
 1. Clona este repositorio en tu máquina local.
 2. Sigue las instrucciones del archivo [`requirements.txt`](./requirements.txt)
-3. Una vez instalado, podra consultar el [`Manual de Usuario.pdf`](./Manual de Usuario.pdf)
+3. Una vez instalado, podra consultar el [`Manual_de_Usuario.pdf`](./Manual_de_Usuario.pdf)
 
 ---
 ## 🤝 Cómo contribuir
