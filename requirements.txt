@@ -26,10 +26,11 @@ os (incluida en la librería estándar).
 3- Ejecución en VS Code
 .	Abrir VS Code.
 .	Ir a Archivo → Abrir carpeta… y seleccionar la carpeta donde está tu proyecto.
-.	Abrir el archivo principal (ejemplo: app.py).
+.	Abrir el archivo principal (ejemplo: Interfaz_Codificador_Cualitativo.py).
 .	Seleccionar el intérprete de Python (menú inferior derecho de VS Code).
 .	Ejecutar el programa con:
-.	Oprimir F5 (ejecutar con depuración)
+.	Oprimir F5 
 
 4 Observaciones
-•	Las rutas de los iconos deben ajustarse a la ubicación de tu computadora.
+•	Para ejecutar el archivo "Interfaz_Codificador_Cualitativo.py", solo se requiere instalar las librerías desde la Terminal y es suficiente, ya que esta es la interfaz pero sin iconos.
+• Para ejecutar el archivo que se encuentra dentro de la carpeta "Interfaz", del programa "Interfaz_CodCual.py", a parte de instalar las librerías debera modificar o adaptar las rutas a los iconos y ajustarse a la ubicación de tu computadora local.
