@@ -1,6 +1,6 @@
 # 🔍 Codificador Cualitativo 💻  [![Licencia](https://img.shields.io/badge/Licencia-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html) 
 
-Aplicación diseñada para optimizar el proceso de codificación cualitativa, facilitando la identificación de palabras clave, oraciones y fragmentos dentro de documentos de opinión (como entrevistas). Su objetivo principal es reducir significativamente el tiempo invertido en localizar información relevante en grandes volúmenes de texto.
+Aplicación diseñada para optimizar el proceso de codificación cualitativa, facilitando la identificación de palabras clave, oraciones y fragmentos dentro de documentos de opinión (como entrevistas). Su objetivo principal es reducir significativamente el tiempo invertido en localizar información relevante en grandes extensiones de texto.
 
 ---
 
