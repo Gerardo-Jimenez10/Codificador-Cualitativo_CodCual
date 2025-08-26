@@ -10,7 +10,7 @@ Aplicación diseñada para optimizar el proceso de codificación cualitativa, fa
 
 ---
 
-## ▶️ Uso
+## ▶️  Uso
 
 Para instalar y ejecutar este proyecto:
 1. Clona este repositorio en tu máquina local.
