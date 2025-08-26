@@ -1,4 +1,4 @@
-📌 Instrucciones de instalación y ejecución
+📌 Instrucciones de instalación y ejecución del programa
 
 1. Requisitos previos
 •	Tener instalado Python 3.9 o superior.
