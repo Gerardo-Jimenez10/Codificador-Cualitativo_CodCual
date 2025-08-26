@@ -34,3 +34,4 @@ os (incluida en la librería estándar).
 4 Observaciones
 •	Para ejecutar el archivo "Interfaz_Codificador_Cualitativo.py", solo se requiere instalar las librerías desde la Terminal y es suficiente, ya que esta es la interfaz pero sin iconos.
 • Para ejecutar el archivo que se encuentra dentro de la carpeta "Interfaz", del programa "Interfaz_CodCual.py", a parte de instalar las librerías debera modificar o adaptar las rutas a los iconos y ajustarse a la ubicación de tu computadora local.
+• Puede utilizar los archivos de texto ubicados en la carpeta "data" como ejemplos para realizar pruebas dentro del sistema mientras está en ejecución.
