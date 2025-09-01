@@ -12,7 +12,7 @@ Aplicación diseñada para optimizar el proceso de codificación cualitativa, fa
 
 ## ▶️  Uso
 
-Para instalar y ejecutar este proyecto:
+Para instalar y ejecutar el código de este proyecto:
 1. Clona este repositorio en tu máquina local.
 2. Sigue las instrucciones del archivo [`requirements.txt`](./requirements.txt)
 3. Una vez instalado, podra consultar el [`Manual_de_Usuario`](./docs/Link_Manual_de_Usuario.txt)
@@ -21,7 +21,7 @@ Para instalar y ejecutar este proyecto:
 
 ## 📦 Descarga del software
 
-El Codificador Cualitativo está disponible listo para usar y descargar en la sección [`Releases`](./https://github.com/Gerardo-Jimenez10/Codificador-Cualitativo_CodCual/releases)  de este repositorio donde se encuentra:
+El Codificador Cualitativo está disponible listo para usar y descargar en la sección [`Releases`](https://github.com/Gerardo-Jimenez10/Codificador-Cualitativo_CodCual/releases) de este repositorio donde se encuentra:
 - **Ejecutable**
 - **Manual de usuario**
 
