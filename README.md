@@ -26,6 +26,7 @@ El Codificador Cualitativo está disponible listo para usar y descargar en la se
 . **Manual de usuario
 
 ---
+
 ## 🤝 Cómo contribuir
 
 Si estás interesado en colaborar:
