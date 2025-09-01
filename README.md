@@ -22,8 +22,8 @@ Para instalar y ejecutar este proyecto:
 ## 📦 Descarga del software
 
 El Codificador Cualitativo está disponible listo para usar y descargar en la sección Release de este repositorio.
-. **Ejecutable
-. **Manual de usuario
+- **Ejecutable**
+- **Manual de usuario**
 
 ---
 
