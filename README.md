@@ -18,6 +18,14 @@ Para instalar y ejecutar este proyecto:
 3. Una vez instalado, podra consultar el [`Manual_de_Usuario`](./docs/Link_Manual_de_Usuario.txt)
 
 ---
+
+##📦 Descarga del software
+
+El Codificador Cualitativo está disponible listo para usar y descargar en la sección Release de este repositorio.
+. Ejecutable
+. Manual de usuario
+
+---
 ## 🤝 Cómo contribuir
 
 Si estás interesado en colaborar:
