@@ -30,17 +30,16 @@ El Codificador Cualitativo está disponible listo para usar y descargar en la se
 ## 🤝 Cómo contribuir
 
 Si estás interesado en colaborar:
-1. **Haz un fork** del repositorio.
-2. **Clona** tu copia en tu equipo:
+1. **Clona** el repositorio en tu equipo:
    ```bash
    git clone https://github.com/TU_USUARIO/TU_REPOSITORIO.git
-3. **Crea una rama** para tu aportación:
+2. **Crea una rama** para tu aportación:
    ```bash
    git checkout -b mi-nueva-funcionalidad
-4. **Realiza tus cambios** y haz commit:
+3. **Realiza tus cambios** y haz commit:
    ```bash
    git commit -m "Descripción clara de mi cambio"
-5. **Sube tu rama** al repositorio en GitHub:
+4. **Sube tu rama** al repositorio en GitHub:
    ```bash
    git push origin mi-nueva-funcionalidad
 
