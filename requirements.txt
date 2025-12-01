@@ -14,8 +14,6 @@
 
 pip 25.0.1
 tkinter (incluida en la instalación estándar de Python).
-pillow 11.1.0 
-pathlib 1.0.1
 textwrap (incluida en la librería estándar).
 nltk 3.9.1
 python-docx 1.1.2
@@ -26,12 +24,9 @@ os (incluida en la librería estándar).
 3- Ejecución en VS Code
 .	Abrir VS Code.
 .	Ir a Archivo → Abrir carpeta… y seleccionar la carpeta donde está tu proyecto.
-.	Abrir el archivo principal (ejemplo: Interfaz_Codificador_Cualitativo.py).
+.	Abrir el archivo principal (ejemplo: Interfaz_CodCual.py).
 .	Seleccionar el intérprete de Python (menú inferior derecho de VS Code).
-.	Ejecutar el programa con:
-.	Oprimir F5 
+.	Ejecutar el programa.
 
 4 Observaciones
-•	Para ejecutar el archivo "Interfaz_Codificador_Cualitativo.py", solo se requiere instalar las librerías desde la Terminal y es suficiente, ya que esta es la interfaz pero sin iconos.
-• Para ejecutar el archivo que se encuentra dentro de la carpeta "Interfaz", del programa "Interfaz_CodCual.py", a parte de instalar las librerías debera modificar o adaptar las rutas a los iconos y ajustarse a la ubicación de tu computadora local.
 • Puede utilizar los archivos de texto ubicados en la carpeta "data" como ejemplos para realizar pruebas dentro del sistema mientras está en ejecución.
