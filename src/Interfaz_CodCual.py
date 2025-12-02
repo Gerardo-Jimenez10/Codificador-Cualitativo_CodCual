@@ -1102,8 +1102,10 @@ class EtiquetadoApp:
             tooltip_dest = Tooltip(self.texto_original, etiqueta_destino)
             self.tooltips_asignados[etiqueta_destino] = tooltip_dest
 
-        # 3. Identificar COLOR Destino
+        # 3. Identificar COLOR Destino de forma robusta
         color_destino = None
+        
+        # Intento 1: Buscar en tags actualmente activos en el widget
         for etiq, tag in self.etiquetas_asignadas:
             if etiq == etiqueta_destino:
                 try:
@@ -1114,27 +1116,43 @@ class EtiquetadoApp:
                 except:
                     pass
         
+        # Intento 2: Si no se encuentra en widget, extraer del nombre del tag (estructura: Color_#HEX_uuid)
+        if not color_destino:
+            for etiq, tag in self.etiquetas_asignadas:
+                if etiq == etiqueta_destino:
+                    try:
+                        parts = tag.split('_')
+                        if len(parts) > 1 and parts[1].startswith('#'):
+                            color_destino = parts[1]
+                            break
+                    except Exception:
+                        pass
+        
+        # Intento 3: Buscar en historial de tooltips (si existe)
         if not color_destino:
              for col, name in self.color_tooltips.items():
                  if name == etiqueta_destino:
                      color_destino = col
                      break
-
+        
         # 4. Actualizar visualmente y lógicamente los tags afectados
         for tag in tags_afectados:
+            # Actualización de eventos (Tooltip)
             self.texto_original.tag_bind(tag, "<Enter>", lambda event, t=tooltip_dest, tg=tag: t.show_tooltip(event, tg))
             self.texto_original.tag_bind(tag, "<Leave>", tooltip_dest.hide_tooltip)
             self.texto_original.tag_bind(tag, "<Motion>", tooltip_dest.update_position)
             
+            # --- MODIFICACIÓN CLAVE (Corrección visual inmediata) ---
             if color_destino:
-                # --- MODIFICACIÓN PUNTO 2 (Corrección visual) ---
-                # Se fuerza la reconfiguración completa (color y estilo) para que el cambio sea visualmente instantáneo
+                # Se fuerza la reconfiguración del tag existente con el color del destino.
+                # Esto actualiza el color en pantalla sin necesidad de refrescar o cambiar archivo.
                 self.texto_original.tag_configure(
                     tag, 
                     foreground=color_destino, 
                     font=("Arial", 13, "bold"), 
                     underline=True
                 )
+            # --------------------------------------------------------
 
         # 5. Actualizar lógica interna de párrafos y etiquetas
         fragmentos_origen = [
@@ -1150,6 +1168,8 @@ class EtiquetadoApp:
         
         self.parrafos_etiquetados = [p for p in self.parrafos_etiquetados if p[2] != etiqueta_origen]
 
+        # Forzar actualización de la interfaz gráfica para asegurar redibujado
+        self.texto_original.update_idletasks()
         self.actualizar_lista_etiquetado()
 
     # --- MÉTODO PARA CREAR SUBRAYADO VISUAL ---
@@ -1191,7 +1211,11 @@ class EtiquetadoApp:
                     try:
                         color = self.texto_original.tag_cget(tag_name, "foreground")
                     except:
+                        # Fallback por si tag_cget falla (p.ej. si el tag no está en el widget actual)
                         color = "black"
+                        parts = tag_name.split('_')
+                        if len(parts) > 1 and parts[1].startswith('#'):
+                            color = parts[1]
 
                     subrayados.append({
                         "tag": tag_name,
