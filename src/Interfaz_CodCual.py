@@ -1092,20 +1092,20 @@ class EtiquetadoApp:
 
     # --- LÓGICA DE FUSIÓN DE ETIQUETAS ---
     def combinar_etiquetas(self, etiqueta_origen, etiqueta_destino):
-        # 1. Identificar tags que se van a mover
+        # 1. Obtener todos los tags afectados (del origen)
         tags_afectados = [tag for etiq, tag in self.etiquetas_asignadas if etiq == etiqueta_origen]
-        
-        # 2. Gestionar Tooltip Destino
+
+        # 2. Obtener o crear tooltip destino
         if etiqueta_destino in self.tooltips_asignados:
             tooltip_dest = self.tooltips_asignados[etiqueta_destino]
         else:
             tooltip_dest = Tooltip(self.texto_original, etiqueta_destino)
             self.tooltips_asignados[etiqueta_destino] = tooltip_dest
 
-        # 3. Identificar COLOR Destino de forma robusta
+        # 3. Determinar el color destino (muy robusto)
         color_destino = None
-        
-        # Intento 1: Buscar en tags actualmente activos en el widget
+
+        # Intento 1: Tomar color desde un tag activo en pantalla
         for etiq, tag in self.etiquetas_asignadas:
             if etiq == etiqueta_destino:
                 try:
@@ -1115,62 +1115,72 @@ class EtiquetadoApp:
                         break
                 except:
                     pass
-        
-        # Intento 2: Si no se encuentra en widget, extraer del nombre del tag (estructura: Color_#HEX_uuid)
+
+        # Intento 2: Tomar el color desde la estructura Color_#HEX_uuid
         if not color_destino:
             for etiq, tag in self.etiquetas_asignadas:
                 if etiq == etiqueta_destino:
-                    try:
-                        parts = tag.split('_')
-                        if len(parts) > 1 and parts[1].startswith('#'):
-                            color_destino = parts[1]
-                            break
-                    except Exception:
-                        pass
-        
-        # Intento 3: Buscar en historial de tooltips (si existe)
+                    parts = tag.split("_")
+                    if len(parts) >= 2 and parts[1].startswith("#"):
+                        color_destino = parts[1]
+                        break
+
+        # Intento 3: Tomar de color_tooltips (respaldo)
         if not color_destino:
-             for col, name in self.color_tooltips.items():
-                 if name == etiqueta_destino:
-                     color_destino = col
-                     break
-        
-        # 4. Actualizar visualmente y lógicamente los tags afectados
+            for col, name in self.color_tooltips.items():
+                if name == etiqueta_destino:
+                    color_destino = col
+                    break
+
+        # Si por alguna razón no hay color aún, usar gris
+        if not color_destino:
+            color_destino = "#444444"
+
+        # 4. ACTUALIZAR TODAS LAS ETIQUETAS VISUALES DEL ORIGEN
         for tag in tags_afectados:
-            # Actualización de eventos (Tooltip)
-            self.texto_original.tag_bind(tag, "<Enter>", lambda event, t=tooltip_dest, tg=tag: t.show_tooltip(event, tg))
+            # Re-asignar tooltip
+            self.texto_original.tag_bind(tag, "<Enter>", 
+                lambda event, t=tooltip_dest, tg=tag: t.show_tooltip(event, tg))
             self.texto_original.tag_bind(tag, "<Leave>", tooltip_dest.hide_tooltip)
             self.texto_original.tag_bind(tag, "<Motion>", tooltip_dest.update_position)
-            
-            # --- MODIFICACIÓN CLAVE (Corrección visual inmediata) ---
-            if color_destino:
-                # Se fuerza la reconfiguración del tag existente con el color del destino.
-                # Esto actualiza el color en pantalla sin necesidad de refrescar o cambiar archivo.
+
+            # *** PARTE CRUCIAL ***
+            # Reconfigurar color y estilo del tag en pantalla
+            try:
                 self.texto_original.tag_configure(
-                    tag, 
-                    foreground=color_destino, 
-                    font=("Arial", 13, "bold"), 
-                    underline=True
+                    tag,
+                    underline=True,
+                    font=("Arial", 13, "bold"),
+                    foreground=color_destino
                 )
-            # --------------------------------------------------------
+            except:
+                pass
 
-        # 5. Actualizar lógica interna de párrafos y etiquetas
+        # 5. Actualizar estructuras lógicas
         fragmentos_origen = [
-            parrafo for parrafo in self.parrafos_etiquetados if parrafo[2] == etiqueta_origen]
-
-        self.parrafos_etiquetados.extend(
-            [(ini, fin, etiqueta_destino) for ini, fin, _ in fragmentos_origen])
-
-        self.etiquetas_asignadas = [
-            (etiqueta_destino if etiq == etiqueta_origen else etiq, tag)
-            for etiq, tag in self.etiquetas_asignadas.copy()
+            p for p in self.parrafos_etiquetados if p[2] == etiqueta_origen
         ]
-        
-        self.parrafos_etiquetados = [p for p in self.parrafos_etiquetados if p[2] != etiqueta_origen]
 
-        # Forzar actualización de la interfaz gráfica para asegurar redibujado
+        # mover los fragmentos al destino
+        self.parrafos_etiquetados.extend(
+            [(i, s, etiqueta_destino) for i, s, _ in fragmentos_origen]
+        )
+
+        # actualizar etiquetas asignadas
+        self.etiquetas_asignadas = [
+            (etiqueta_destino if e == etiqueta_origen else e, t)
+            for e, t in self.etiquetas_asignadas
+        ]
+
+        # limpiar origen
+        self.parrafos_etiquetados = [
+            p for p in self.parrafos_etiquetados if p[2] != etiqueta_origen
+        ]
+
+        # refrescar vista
         self.texto_original.update_idletasks()
         self.actualizar_lista_etiquetado()
+        self.guardar_subrayados()
 
     # --- MÉTODO PARA CREAR SUBRAYADO VISUAL ---
     def aplicar_subrayado(self, color_subrayado):
