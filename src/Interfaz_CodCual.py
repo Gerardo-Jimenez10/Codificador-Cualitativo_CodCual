@@ -234,18 +234,24 @@ class EtiquetadoApp:
         # =========================================================================================
         
         # -------------------- ÁREA 1: PANEL IZQUIERDO (LISTA DE CÓDIGOS) --------------------
-        # Controla el ancho de esta columna con el parámetro 'width' en self.lista_etiquetado.
         
         # Etiqueta de encabezado para el panel izquierdo
         tk.Label(raiz, text="Lista de Codificaciones Realizadas", font=("arial", 12, "bold"), bg="cyan").grid(
             row=4, column=0, columnspan=2, padx=(8, 0), pady=(8, 0), sticky='ew')
 
-        # Widget de Texto (Lista): Modificar 'width' aquí ajusta el ancho base del panel izquierdo.
+        # --- FRAME CONTENEDOR PARA MANEJAR SCROLL HORIZONTAL Y VERTICAL ---
+        frame_lista = tk.Frame(raiz)
+        frame_lista.grid(row=5, column=0, pady=(0, 8), padx=(8, 0), sticky='nsew')
+        
+        # Configuración de pesos del frame contenedor
+        frame_lista.grid_rowconfigure(0, weight=1)
+        frame_lista.grid_columnconfigure(0, weight=1)
+
+        # Widget de Texto (Lista): 
+        # IMPORTANTE: wrap="none" es vital para que funcione el scroll horizontal
         self.lista_etiquetado = tk.Text(
-            raiz, wrap=tk.WORD, width=30, height=24) # <--- AJUSTAR ANCHO (width) AQUI
-        self.lista_etiquetado.grid(row=5, column=0, pady=(
-            0, 8), padx=(8, 0), sticky='nsew')
-        self.lista_etiquetado.configure(bg="#FFFFCC")
+            frame_lista, wrap="none", width=30, height=24, bg="#FFFFCC")
+        self.lista_etiquetado.grid(row=0, column=0, sticky='nsew')
         
         # Bloqueo de edición manual en la lista de códigos
         self.lista_etiquetado.bind("<Key>", lambda e: "break")       
@@ -259,24 +265,33 @@ class EtiquetadoApp:
         self.lista_etiquetado.bind("<Button-1>", lambda e: "break")   
         self.lista_etiquetado.bind("<B1-Motion>", lambda e: "break")
 
-        # Barra de desplazamiento para la lista de códigos
+        # Barra de desplazamiento VERTICAL
         scrollVertical3 = tk.Scrollbar(
-            raiz, command=self.lista_etiquetado.yview)
-        scrollVertical3.grid(row=5, column=1, pady=(0, 8),
-                             padx=0, sticky="nsew")
+            frame_lista, command=self.lista_etiquetado.yview)
+        scrollVertical3.grid(row=0, column=1, sticky="ns")
         self.lista_etiquetado.config(yscrollcommand=scrollVertical3.set)
+
+        # --- Barra de desplazamiento HORIZONTAL (Dinámica) ---
+        self.scrollHorizontal = tk.Scrollbar(
+            frame_lista, orient="horizontal", command=self.lista_etiquetado.xview)
+        
+        # Inicialmente la colocamos en la grilla, pero será gestionada por 'actualizar_scroll_horizontal_codigos'
+        self.scrollHorizontal.grid(row=1, column=0, sticky="ew")
+        self.lista_etiquetado.config(xscrollcommand=self.scrollHorizontal.set)
+        
+        # Eventos para detectar cambios de tamaño y activar/desactivar la barra
+        self.lista_etiquetado.bind("<Configure>", lambda e: self.actualizar_scroll_horizontal_codigos())
 
 
         # -------------------- ÁREA 2: PANEL CENTRAL (TEXTO ORIGINAL) --------------------
-        # Controla el ancho de esta columna con el parámetro 'width' en self.texto_original.
         
         # Etiqueta de encabezado para el panel central
         tk.Label(raiz, text="Texto", font=("arial", 12, "bold"), bg="#99FF00").grid(
             row=4, column=2, columnspan=2, pady=(8, 0), padx=(8, 0), sticky='ew')
 
-        # Widget de Texto (Central): Modificar 'width' aquí ajusta el ancho base del área de trabajo principal.
+        # Widget de Texto (Central)
         self.texto_original = tk.Text(raiz, wrap=tk.WORD, width=77, height=23, font=(
-            "Arial", 13))   # <--- AJUSTAR ANCHO (width) AQUI
+            "Arial", 13))   
         self.texto_original.grid(row=5, column=2, padx=(
             8, 0), pady=(0, 8), sticky='nsew')
 
@@ -287,15 +302,14 @@ class EtiquetadoApp:
 
 
         # -------------------- ÁREA 3: PANEL DERECHO (CITAS DEL CÓDIGO) --------------------
-        # Controla el ancho de esta columna con el parámetro 'width' en self.texto_etiquetado.
         
         # Etiqueta de encabezado para el panel derecho
         tk.Label(raiz, text="Citas del Código", font=("arial", 12, "bold"), bg="#FF93F2").grid(
             row=4, column=4, columnspan=2, pady=(8, 0), padx=(8, 8), sticky='ew')
 
-        # Widget de Texto (Derecho): Modificar 'width' aquí ajusta el ancho base del panel de resultados.
+        # Widget de Texto (Derecho)
         self.texto_etiquetado = tk.Text(
-            raiz, wrap=tk.WORD, width=30, height=23, font=("Arial", 13)) # <--- AJUSTAR ANCHO (width) AQUI
+            raiz, wrap=tk.WORD, width=30, height=23, font=("Arial", 13))
         self.texto_etiquetado.grid(row=5, column=4, padx=(
             8, 0), pady=(0, 8), sticky='nsew')
         self.texto_etiquetado.configure(bg="#FFFFCC")
@@ -309,8 +323,6 @@ class EtiquetadoApp:
 
 
         # -------------------- CONTROL DE EXPANSIÓN (WEIGHTS) --------------------
-        # Estos valores determinan qué tanto crece cada área al maximizar la ventana.
-        # Mayor valor = Mayor prioridad de expansión.
         
         raiz.grid_rowconfigure(5, weight=1)        # Permite que la fila de los textos crezca verticalmente
         raiz.grid_columnconfigure(0, weight=1)     # Expansión del Panel Izquierdo (Lista)
@@ -930,102 +942,129 @@ class EtiquetadoApp:
 
     def restaurar_subrayado(self, tag_name):
         pass 
+    
+    # --- MÉTODO PARA GESTIONAR BARRA HORIZONTAL DINÁMICA ---
+    def actualizar_scroll_horizontal_codigos(self):
+        try:
+            # Ancho visible del widget Text
+            visible_w = self.lista_etiquetado.winfo_width()
+            
+            # Buscamos el ancho máximo entre los widgets hijos (botones de código)
+            max_child_w = 0
+            for child in self.lista_etiquetado.winfo_children():
+                try:
+                    # reqwidth nos dice cuánto espacio REAL necesita el botón
+                    w = child.winfo_reqwidth()
+                    if w > max_child_w:
+                        max_child_w = w
+                except:
+                    pass
+
+            # Lógica de visualización: Si el contenido es más ancho que el visor, mostrar barra
+            # Se añade un pequeño margen (ej. 5px) para evitar parpadeos
+            if max_child_w > (visible_w - 5):
+                self.scrollHorizontal.grid()   # Mostrar
+            else:
+                self.scrollHorizontal.grid_remove()  # Ocultar
+
+        except Exception:
+            pass
 
     # --- MÉTODO PARA ACTUALIZAR LA LISTA DE CÓDIGOS (PANEL IZQUIERDO) ---
     def actualizar_lista_etiquetado(self):
+        self.lista_etiquetado.config(state="normal") # Habilitar temporalmente para editar
         self.lista_etiquetado.delete(1.0, tk.END)
         
         # Limpieza de widgets previos
         for widget in self.lista_etiquetado.winfo_children():
             widget.destroy()
 
-        # --- Configuración de separación (ajustable fácilmente) ---
-        espaciado_inicial = 7        # Espacio inicial SOLO para la primera fila
-        pady_primera_fila = (18, 10) # Separación vertical especial para la primera fila
-        pady_general = (10, 10)      # Separación vertical para las demás filas
-        padx_contador = (10, 3)      # Separación horizontal del contador
-        padx_color = (7, 7)        # Separación horizontal del botón color
-        padx_resaltar = (7, 5)      # Separación horizontal del botón resaltar
-
         etiquetas_unicas = set()
 
+        # Espaciado inicial
+        self.lista_etiquetado.insert(tk.END, "\n")
+
         for idx, (etiqueta, tag_name) in enumerate(self.etiquetas_asignadas, start=0):
-            if etiqueta not in etiquetas_unicas:
-                etiquetas_unicas.add(etiqueta)
-                self.lista_etiquetado.insert(tk.END, '\n\n')
+            if etiqueta in etiquetas_unicas:
+               continue
+            etiquetas_unicas.add(etiqueta)
 
-                contador = sum(
-                    1 for _, _, etiq in self.parrafos_etiquetados if etiq == etiqueta)
+            # Cálculo del contador
+            contador = sum(
+                1 for _, _, etiq in self.parrafos_etiquetados if etiq == etiqueta)
 
-                color_bg = None
+            # Recuperación del color
+            color_bg = None
+            try:
+                color_bg = self.texto_original.tag_cget(tag_name, "foreground")
+            except Exception: pass
 
-                # Recuperación del color para el botón indicador
-                try:
-                    color_bg = self.texto_original.tag_cget(tag_name, "foreground")
-                except Exception:
-                    pass
+            if not color_bg:
+                 try:
+                     parts = tag_name.split('_')
+                     if len(parts) > 1 and parts[1].startswith('#'):
+                         color_bg = parts[1]
+                 except Exception: pass
+            
+            if not color_bg:
+                for datos in self.archivos_abiertos.values():
+                    found = False
+                    for sub in datos.get("subrayados", []):
+                        if sub["tag"] == tag_name:
+                            color_bg = sub["color"]
+                            found = True
+                            break
+                    if found: break
+            
+            if not color_bg: color_bg = "gray"
 
-                if not color_bg:
-                     try:
-                         parts = tag_name.split('_')
-                         # El formato es Color_#123456_uuid
-                         if len(parts) > 1 and parts[1].startswith('#'):
-                             color_bg = parts[1]
-                     except Exception:
-                         pass
-                
-                if not color_bg:
-                    for datos in self.archivos_abiertos.values():
-                        found = False
-                        for sub in datos.get("subrayados", []):
-                            if sub["tag"] == tag_name:
-                                color_bg = sub["color"]
-                                found = True
-                                break
-                        if found: break
-                
-                if not color_bg:
-                    color_bg = "gray"
+            # --- CONSTRUCCIÓN DE LA FILA USANDO window_create ---
+            
+            # 1. Etiqueta de Conteo
+            label_contador = tk.Label(self.lista_etiquetado, text=f"[{contador}]", font=(
+                "Arial", 12, "bold"), fg="purple", bg="#FFFFCC")
+            self.lista_etiquetado.window_create(tk.END, window=label_contador)
+            
+            # Espaciador
+            self.lista_etiquetado.insert(tk.END, "  ")
 
-                # --- Selección de separación según si es la primera fila o no ---
-                pady_actual = pady_primera_fila if idx == 0 else pady_general
-                fila = idx + espaciado_inicial
+            # 2. Botón de Color
+            btn_color = tk.Button(self.lista_etiquetado, text="  ", bg=color_bg, relief="groove", borderwidth=2, command=lambda t=tag_name: self.resaltar_etiqueta(t))
+            btn_color.bind("<Enter>", lambda event, btn=btn_color: btn.config(cursor="hand2"))
+            btn_color.bind("<Leave>", lambda event, btn=btn_color: btn.config(cursor=""))
+            self.lista_etiquetado.window_create(tk.END, window=btn_color)
 
-                # Botón de color (Indicador visual)
-                btn_color = tk.Button(self.lista_etiquetado, text="  ", bg=color_bg, relief="groove", borderwidth=2, command=lambda t=tag_name: self.resaltar_etiqueta(t))
-                btn_color.grid(row=fila, column=1, padx=padx_color, pady=pady_actual)
+            # Espaciador
+            self.lista_etiquetado.insert(tk.END, "  ")
 
-                btn_color.bind("<Enter>", lambda event, btn=btn_color: btn.config(cursor="hand2"))
-                btn_color.bind("<Leave>", lambda event, btn=btn_color: btn.config(cursor=""))
+            # 3. Botón con el Nombre del Código
+            btn_resaltar = tk.Button(self.lista_etiquetado, text=f"{etiqueta}", command=lambda t=tag_name: self.recuperar_fragmento_codificado(
+                t), justify=tk.LEFT, font=("arial", 10, "bold"), bg="SystemButtonFace")
+            
+            # Hover effects
+            btn_resaltar.bind("<Enter>", lambda event, btn=btn_resaltar: btn.config(cursor="hand2", bg="cyan"))
+            btn_resaltar.bind("<Leave>", lambda event, btn=btn_resaltar: btn.config(cursor="", bg="SystemButtonFace"))
 
-                # Etiqueta de conteo
-                label_contador = tk.Label(self.lista_etiquetado, text=f"{[contador]}", font=(
-                    "Arial", 13, "bold"), fg="purple", bg="#FFFFCC")
-                label_contador.grid(row=fila, column=0, padx=padx_contador, pady=pady_actual, sticky="w") 
+            # Menú contextual
+            menu_contextual = tk.Menu(btn_resaltar, tearoff=0)
+            menu_contextual.add_command(label="Eliminar Código", image=self.icono_eliminar, compound='left', font=(
+                "arial", 11, "bold"), foreground="red", command=lambda lc=label_contador, bc=btn_color, br=btn_resaltar, e=etiqueta:
+                self.eliminar_etiqueta(lc, bc, br, e))
+            menu_contextual.add_separator()
+            menu_contextual.add_command(
+                label="Anexar a otro Código", image=self.icono_anexar, compound='left', font=(
+                "arial", 12, "bold"), foreground="navy blue", command=lambda b=btn_resaltar, e=etiqueta: self.asignar_etiqueta(b, e))
 
-                # Botón con el nombre del código (Acción principal)
-                btn_resaltar = tk.Button(self.lista_etiquetado, text=f"{etiqueta}", command=lambda t=tag_name: self.recuperar_fragmento_codificado(
-                    t), justify=tk.LEFT, font=("arial", 10, "bold"))
-                btn_resaltar.grid(row=fila, column=2, padx=padx_resaltar, pady=pady_actual, sticky="w")
+            btn_resaltar.bind("<Button-3>", lambda event, menu=menu_contextual: menu.post(event.x_root, event.y_root))
 
-                # Hover efecto en color cyan
-                btn_resaltar.bind("<Enter>", lambda event, btn=btn_resaltar: btn.config(cursor="hand2", bg="cyan"))
-                btn_resaltar.bind("<Leave>", lambda event, btn=btn_resaltar: btn.config(cursor="", bg="SystemButtonFace"))
+            # Inserción del botón principal
+            self.lista_etiquetado.window_create(tk.END, window=btn_resaltar)
 
-                # Menú contextual para cada etiqueta
-                menu_contextual = tk.Menu(btn_resaltar, tearoff=0)
-                menu_contextual.add_command(label="Eliminar Código", image=self.icono_eliminar, compound='left', font=(
-                    "arial", 11, "bold"), foreground="red", command=lambda lc=label_contador, bc=btn_color, br=btn_resaltar, e=etiqueta:
-                    self.eliminar_etiqueta(lc, bc, br, e))
-                menu_contextual.add_separator()
-                menu_contextual.add_command(
-                    label="Anexar a otro Código", image=self.icono_anexar, compound='left', font=(
-                        "arial", 12, "bold"), foreground="navy blue", command=lambda b=btn_resaltar, e=etiqueta: self.asignar_etiqueta(b, e))
+            # Salto de línea para el siguiente elemento
+            self.lista_etiquetado.insert(tk.END, "\n\n")
 
-                btn_resaltar.bind(
-                    "<Button-3>", lambda event, menu=menu_contextual: menu.post(event.x_root, event.y_root))
-
-        self.lista_etiquetado.insert(tk.END, '\n\n')
+        # Verificación final de la barra de scroll
+        self.actualizar_scroll_horizontal_codigos()
 
     # --- MÉTODO PARA ELIMINAR UNA ETIQUETA ---
     def eliminar_etiqueta(self, label_contador, boton_color, boton_resaltar, etiqueta):
@@ -1036,8 +1075,9 @@ class EtiquetadoApp:
             return
 
         try:
-            for widget in self.lista_etiquetado.winfo_children():
-                widget.destroy()
+            # En la versión mejorada, no necesitamos destruir los widgets manualmente uno por uno
+            # ya que vamos a llamar a actualizar_lista_etiquetado() al final,
+            # pero mantendremos la lógica de datos.
 
             # Eliminación en todos los archivos cargados
             for nombre_archivo, datos in self.archivos_abiertos.items():
@@ -1075,6 +1115,7 @@ class EtiquetadoApp:
             self.parrafos_etiquetados = [p for p in self.parrafos_etiquetados if p[2] != etiqueta]
 
             self.raiz.update_idletasks()
+            # La llamada crucial para limpiar la interfaz y que desaparezca la barra si es necesario
             self.actualizar_lista_etiquetado()
             self.guardar_subrayados() 
 
