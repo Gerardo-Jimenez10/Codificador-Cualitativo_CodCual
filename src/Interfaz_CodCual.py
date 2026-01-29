@@ -8,6 +8,7 @@ import pickle
 import docx
 import fitz  # Se importa PyMuPDF para manejo de archivos PDF
 import os
+import sys  
 import uuid  # Se importa uuid para generar identificadores únicos
 
 # --- IMPORTACIÓN Y MANEJO DE NLTK (PROCESAMIENTO DE LENGUAJE NATURAL) ---
@@ -124,12 +125,10 @@ class Tooltip:
 
 # --- FUNCIÓN AUXILIAR PARA RUTAS RELATIVAS (COMPATIBILIDAD CON PYINSTALLER) ---
 def ruta_relativa(ruta):
-    import sys, os
-    # Se verifica si el atributo '_MEIPASS' existe en el módulo sys (indicativo de ejecución en entorno empaquetado PyInstaller)
+    # Esta función se usa para ASSETS DE SOLO LECTURA (imágenes, iconos)
+    # que se empaquetan DENTRO del exe.
     if hasattr(sys, "_MEIPASS"):
-        # Se construye la ruta absoluta uniendo el directorio temporal de PyInstaller con la ruta relativa dada
         return os.path.join(sys._MEIPASS, ruta)
-    # Se retorna la ruta original sin cambios si no se está ejecutando desde un empaquetado
     return ruta
 
 # --- CLASE PRINCIPAL DE LA APLICACIÓN ---
@@ -147,6 +146,23 @@ class EtiquetadoApp:
         self.raiz.state("zoomed")
         # Se define el tamaño mínimo de la ventana para asegurar la visibilidad correcta de los elementos
         self.raiz.minsize(800, 600)
+
+        # =========================================================================
+        # CORRECCIÓN PARA PERSISTENCIA DE DATOS EN EXE (.pkl)
+        # =========================================================================
+        # Para guardar datos, NO queremos la carpeta temporal de PyInstaller (_MEIPASS).
+        # Queremos la carpeta donde está el .exe o el script .py.
+        
+        if getattr(sys, 'frozen', False):
+            # Si se está ejecutando como un .exe compilado (frozen)
+            # sys.executable es la ruta completa al archivo .exe
+            self.base_dir_script = os.path.dirname(sys.executable)
+        else:
+            # Si se está ejecutando como script .py normal
+            self.base_dir_script = os.path.dirname(os.path.abspath(__file__))
+            
+        self.ruta_pickle = os.path.join(self.base_dir_script, "datos_codificacion.pkl")
+        # =========================================================================
 
         # --- VARIABLES DE CONTROL TKINTER ---
         # Se inicializa la variable de control tipo cadena para las palabras clave
@@ -177,12 +193,13 @@ class EtiquetadoApp:
         self.raiz.configure(menu=self.barraMenu)
 
         # --- CARGA DE ÍCONOS Y RECURSOS GRÁFICOS ---
-        # Se obtiene el directorio base absoluto donde se encuentra el script actual
-        base_dir = os.path.dirname(os.path.abspath(__file__))
-        # Se resuelve la ruta base relativa compatible con el empaquetado (si aplica)
-        ruta_base = ruta_relativa(base_dir)
+        # Para cargar recursos empaquetados (lectura), usamos la lógica de _MEIPASS o ruta normal
+        base_dir_assets = os.path.dirname(os.path.abspath(__file__))
+        if hasattr(sys, "_MEIPASS"):
+            base_dir_assets = sys._MEIPASS
+            
         # Se construye la ruta completa al archivo de imagen del logo
-        icono_ruta = os.path.join(ruta_base, "Logo.png")
+        icono_ruta = os.path.join(base_dir_assets, "Logo.png")
 
         # Se intenta cargar y establecer el ícono de la ventana principal
         try:
@@ -194,7 +211,7 @@ class EtiquetadoApp:
             pass 
 
         # Se construye la ruta al directorio que contiene los íconos de la interfaz
-        ruta_iconos = ruta_relativa(os.path.join(base_dir, "Iconos"))
+        ruta_iconos = os.path.join(base_dir_assets, "Iconos")
 
         # Se define una función local para cargar imágenes de íconos manejando excepciones de forma segura
         def cargar_icono(nombre):
@@ -334,7 +351,7 @@ class EtiquetadoApp:
         # Widget de Texto (Central)
         # Se crea el widget de texto principal con ajuste por palabra (wrap=tk.WORD) para mostrar el contenido
         self.texto_original = tk.Text(raiz, wrap=tk.WORD, width=77, height=23, font=(
-            "Arial", 13))   
+            "Arial", 14))   
         # Se posiciona el widget de texto central en la grilla
         self.texto_original.grid(row=5, column=2, padx=(
             8, 0), pady=(0, 8), sticky='nsew')
@@ -401,8 +418,8 @@ class EtiquetadoApp:
         # --- RECUPERACIÓN DE DATOS GUARDADOS (PERSISTENCIA) ---
         datos_guardados = {}
         try:
-            # Se intenta abrir el archivo pickle para leer datos de sesiones previas
-            with open("datos_codificacion.pkl", "rb") as archivo_datos:
+            # Se intenta abrir el archivo pickle usando la RUTA ABSOLUTA calculada
+            with open(self.ruta_pickle, "rb") as archivo_datos:
                 datos_guardados = pickle.load(archivo_datos)
         except (FileNotFoundError, Exception):
             # Si hay error o no existe el archivo, se inicia con un diccionario vacío
@@ -462,21 +479,20 @@ class EtiquetadoApp:
                 color = sub["color"]
                 etiqueta = sub["etiqueta"]
 
-                # Se recrea el tag en el widget de texto
+                # Se añade el tag al rango de texto especificado
                 self.texto_original.tag_add(tag_name, start, end)
-                # Se configura el estilo visual del tag recuperado
+                # Se configura el estilo visual del tag (subrayado, color, fuente)
                 self.texto_original.tag_configure(
-                    tag_name, underline=True, font=("Arial", 13, "bold"), foreground=color
+                    tag_name, underline=True, font=("Arial", 14, "bold"), foreground=color
                 )
 
-                # Se recrea el objeto Tooltip asociado al fragmento
+                # Se crea y vincula el tooltip correspondiente a la etiqueta
                 tooltip = Tooltip(self.texto_original, etiqueta)
-                # Se vinculan los eventos de ratón para mostrar/ocultar el tooltip restaurado
-                self.texto_original.tag_bind(tag_name, "<Enter>", lambda e, t=tooltip, tg=tag_name: t.show_tooltip(e, tg))
+                self.texto_original.tag_bind(tag_name, "<Enter>", lambda event, tooltip=tooltip, tag_name=tag_name: tooltip.show_tooltip(event, tag_name))
                 self.texto_original.tag_bind(tag_name, "<Leave>", tooltip.hide_tooltip)
                 self.texto_original.tag_bind(tag_name, "<Motion>", tooltip.update_position)
 
-            # Se asegura que la selección de texto esté visible por encima de otros tags
+            # Se asegura que la selección de texto esté visible (capa superior)
             self.texto_original.tag_raise("sel")
         
         # Se refresca la lista lateral de etiquetas con los datos cargados
@@ -507,12 +523,12 @@ class EtiquetadoApp:
     def mostrar_informacion(self):
         # Se muestra una ventana de mensaje modal con la información de la aplicación y el autor
         messagebox.showinfo("Acerca de...",
-                            "          Aplicación desarrollada en Python.\n\n"
-                            "                  Derechos reservados®\n\n"
-                            '         "GERARDO HERNÁNDEZ JIMÉNEZ"\n\n'
-                            "   Egresado de la Licenciatura en Informática.\n\n"
+                            "         Aplicación desarrollada en Python.\n\n"
+                            "                Derechos reservados®\n\n"
+                            '        "GERARDO HERNÁNDEZ JIMÉNEZ"\n\n'
+                            "  Egresado de la Licenciatura en Informática.\n\n"
                             "        Centro Universitario UAEM Texcoco.\n\n"
-                            " Universidad Autónoma del Estado de México.")
+                            "Universidad Autónoma del Estado de México.")
 
     # --- MÉTODO PARA DESPLEGAR EL MENÚ CONTEXTUAL ---
     def mostrar_menu_contextual_texto_original(self, event):
@@ -582,7 +598,7 @@ class EtiquetadoApp:
                 self.texto_original.tag_add(tag_name, start, end)
                 # Se configura el estilo visual del tag (subrayado, color, fuente)
                 self.texto_original.tag_configure(
-                    tag_name, underline=True, font=("Arial", 13, "bold"), foreground=color
+                    tag_name, underline=True, font=("Arial", 14, "bold"), foreground=color
                 )
 
                 # Se crea y vincula el tooltip correspondiente a la etiqueta
@@ -835,7 +851,7 @@ class EtiquetadoApp:
                 self.texto_original.tag_configure(
                     tag_name_visual,
                     underline=True,
-                    font=("Arial", 13, "bold"),
+                    font=("Arial", 14, "bold"),
                     foreground=color_subrayado
                 )
             except tk.TclError:
@@ -947,13 +963,13 @@ class EtiquetadoApp:
         bold_font = font.Font(self.texto_original, self.texto_original.cget("font"))
         bold_font.configure(weight="bold")
 
-        # Se divide el contenido por líneas e inserta con numeración visual
+        # Se divide el contenido por líneas e inserta SIN numeración visual
         lineas = contenido_mostrar.split('\n')
-        for i, linea in enumerate(lineas, start=1):
-            self.texto_original.insert(tk.END, f"{i}\u2043 ", ("bold",))
+        for linea in lineas:
+            # Se inserta cada línea seguida de dos saltos de línea para espaciado, sin el formato de número
             self.texto_original.insert(tk.END, f"{linea}\n\n")
 
-        # Se configura el tag para que la numeración aparezca en negrita
+        # Se configura el tag para que la numeración aparezca en negrita (aunque ya no se use para números)
         self.texto_original.tag_configure("bold", font=bold_font)
 
     # --- MÉTODO PARA NAVEGAR ENTRE ETIQUETAS (RESALTAR AL CLIC EN LISTA) ---
@@ -1424,7 +1440,7 @@ class EtiquetadoApp:
         
         # Se configura el tag con el color y estilo especificados
         self.texto_original.tag_configure(tag_name, underline=True, font=(
-            "Arial", 13, "bold"), foreground=color_subrayado)
+            "Arial", 14, "bold"), foreground=color_subrayado)
 
         # Se aplica el tag al rango seleccionado en el texto
         self.texto_original.tag_add(tag_name, sel_first, sel_last)
@@ -1567,9 +1583,19 @@ class EtiquetadoApp:
                 "subrayados": subrayados_guardados
             }
 
-        # Se escribe el archivo de persistencia 'datos_codificacion.pkl' en disco
-        with open("datos_codificacion.pkl", "wb") as archivo:
-            pickle.dump(datos_a_guardar, archivo)
+        # LÓGICA DE GUARDADO CONDICIONAL:
+        # Se utiliza self.ruta_pickle (ruta absoluta) para asegurar que se guarda/borra
+        # en la misma carpeta del script, independientemente de donde se ejecute.
+        if not self.archivos_abiertos:
+            if os.path.exists(self.ruta_pickle):
+                try:
+                    os.remove(self.ruta_pickle)
+                except OSError:
+                    pass
+        else:
+            # Si HAY datos válidos, se escribe/sobreescribe el archivo pickle usando la ruta absoluta
+            with open(self.ruta_pickle, "wb") as archivo:
+                pickle.dump(datos_a_guardar, archivo)
 
         # Se destruye la ventana raíz y se finaliza la ejecución de la aplicación
         self.raiz.destroy()
